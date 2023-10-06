@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -20,7 +21,6 @@ section {
     position: relative;
     width: 100%;
     height: 200vh;
-    padding: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,11 +29,16 @@ section {
 
 section img {
     position: absolute;
-    top: 0;
     left: 0;
+    width: 100vw;
+    height: auto;
+    object-fit: cover;
+}
+
+img {
+    object-fit: cover; /* cover, contain, fill are the most common values */
     width: 100%;
     height: 100vh;
-    object-fit: cover;
 }
 
 #sun {
@@ -41,20 +46,21 @@ section img {
 }
 
 #text {
-    transform: translateY(200px);
+    bottom: 80vh;
+    z-index: 8;
 }
 
 #cloud {
-    transform: translateY(50vh);
+    bottom: 50vh;
 }
 
 #cityFront {
-    transform: translateY(100vh);
-    height: 120vh;
+    bottom: 0px;
+    z-index: 9;
 }
 
 #cityBack {
-    transform: translateY(70vh);
+    bottom: 0px; /* height of section::before */
 }
 
 section::before {
@@ -111,4 +117,30 @@ section::before {
 @keyframes blink {
     0%, 49% { opacity: 1; }
     50%, 100% { opacity: 0; }
+}
+
+@media (max-width: 1300px) {
+    section {
+        height: 120vh;
+    }
+    #text {
+        bottom: 50vh;
+    }
+    
+    #cloud {
+        bottom: 30vh;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        height: 80vh;
+    }
+    #text {
+        bottom: 30vh;
+    }
+    
+    #cloud {
+        bottom: 30vh;
+    }
 }

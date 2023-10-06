@@ -1,6 +1,4 @@
 let sun = document.getElementById('sun');
-let cityBack = document.getElementById('cityBack');
-let cityFront = document.getElementById('cityFront');
 let cloud = document.getElementById('cloud');
 let text = document.getElementById('text');
 let imageSection = document.getElementById('imageSection');
@@ -9,21 +7,30 @@ let sectionEnd = sectionStart + imageSection.offsetHeight;
 let typeSection = document.querySelector('.type-section');
 let hasStartedTyping = false;
 
+function updateSectionPositions() {
+    // Dynamically update sectionStart, middleSection, and sectionEnd based on the current values
+    sectionStart = imageSection.offsetTop;
+    sectionEnd = sectionStart + imageSection.offsetHeight;
+}
+
 window.addEventListener('scroll', function() {
     let value = window.scrollY;
+
+    // Update positions dynamically on scroll
+    updateSectionPositions();
+
     // For the images and text animation
     if (value > sectionStart && value < sectionEnd) {
         sun.style.top = (value - sectionStart) * 0.8 + 'px';
         cloud.style.left = (value - sectionStart) * 0.25 + 'px';
-        cityBack.style.top = (value - sectionStart) * 0.3 + 'px';
-        text.style.marginRight = (value - sectionStart) * 0.7 + 'px';
+        text.style.marginRight = (value - sectionStart) * 0.8 + 'px';
     } else if (value >= sectionEnd) {
         // Reset styles when out of the section
         sun.style.top = '';
         cloud.style.left = '';
-        cityBack.style.top = '';
         text.style.marginRight = '';
     }
+
     // For the typing effect
     let sectionTop = typeSection.offsetTop;
     let sectionBottom = sectionTop + typeSection.offsetHeight;
@@ -38,6 +45,9 @@ window.addEventListener('scroll', function() {
         hasStartedTyping = false;
     }
 });
+
+window.addEventListener('resize', updateSectionPositions);
+
 const texts = ["It's 6 PM already", "Time for CG Fun !"];
 let textIndex = 0;
 let charIndex = 0;
