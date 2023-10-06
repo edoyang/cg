@@ -69,7 +69,7 @@ function type() {
         if (charIndex > 0) {
             charIndex--;
             updateText();
-            typingTimeout = setTimeout(type, 100);
+            typingTimeout = setTimeout(type, 25);
         } else {
             isDeleting = false;
             textIndex = (textIndex + 1) % texts.length;
@@ -79,12 +79,12 @@ function type() {
         if (charIndex < texts[textIndex].length) {
             charIndex++;
             updateText();
-            typingTimeout = setTimeout(type, 150);
+            typingTimeout = setTimeout(type, 75);
         } else {
             typingTimeout = setTimeout(() => {
                 isDeleting = true;
                 type();
-            }, 1000);
+            }, 2000);
         }
     }
 }
