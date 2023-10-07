@@ -21,7 +21,7 @@ window.addEventListener('scroll', function() {
 
     // For the images and text animation
     if (value > sectionStart && value < sectionEnd) {
-        sun.style.top = (value - sectionStart) * 0.8 + 'px';
+        sun.style.top = (value - sectionStart) * 1 + 'px';
         cloud.style.left = (value - sectionStart) * 0.25 + 'px';
         text.style.marginRight = (value - sectionStart) * 0.8 + 'px';
     } else if (value >= sectionEnd) {
@@ -93,3 +93,38 @@ function updateText() {
     document.getElementById('typed-text').textContent = texts[textIndex].substring(0, charIndex);
 }
 type();
+
+const scrollers = document.querySelectorAll(".scroller");
+
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    addAnimation ();
+}
+
+function addAnimation() {
+    scrollers.forEach((scroller) => {
+        scroller.setAttribute("data-animated", true);
+
+        const scrollerInner = scroller.querySelector(".scroller__inner");
+        const scrollerContent = Array.from(scrollerInner.children);
+
+        scrollerContent.forEach(item => {
+            const duplicatedItem = item.cloneNode(true);
+            duplicatedItem.setAttribute("aria-hidden", true);
+            scrollerInner.appendChild(duplicatedItem);
+        });
+    });
+}
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    const introElement = document.querySelector('.intro');
+
+    // Show the intro and then fade it out after a delay
+    setTimeout(() => {
+        introElement.style.animation = 'fadeOut 1s forwards';
+
+        // After the animation, hide the intro from the flow of the document
+        setTimeout(() => {
+            introElement.style.display = 'none';
+        }, 1000); // this should match the duration of your fade-out animation
+    }, 2000); // this means the pop-up will display for 3 seconds before fading out
+});

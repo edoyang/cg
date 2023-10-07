@@ -7,20 +7,76 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Push logo to the left and ul to the right */
+    align-items: center;
+    position: fixed; /* Make the navbar fixed/sticky */
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 5%; /* Add some padding to give it space */
+    background-color: transparent; /* Make the background transparent */
+    z-index: 9999; /* Ensure the navbar stays on top */
+}
+
+.logo {
+    height: 50px; /* You can adjust this to change the logo size */
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar li {
+    margin: 0 10px; /* Add some margin between the list items */
+}
+
+.navbar a {
+    text-decoration: none; /* Remove the underline */
+    color: white; /* Starting color */
+    text-shadow: 2px 2px 1px black; /* Black outline */
+    font-size: 16px; /* Font size */
+    transition: color 0.3s; /* Transition for the hover effect */
+}
+
+.navbar a:hover {
+    color: gray; /* Color on hover, change as desired */
+    text-shadow: 2px 2px 1px black; /* Black outline on hover */
+}
+
 body {
     min-height: 100vh;
-    font-family: 'Black Ops One', sans-serif
+    font-family: 'Black Ops One', sans-serif;
 }
 
+/* Ensure intro takes up entire screen and centers content */
 .intro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 100vh;
+    background-color: rgba(255,255,255,0.9); /* Semi-opaque white */
     display: flex;
-    justify-content: center;
     align-items: center;
-    overflow: hidden;
+    justify-content: center;
+    z-index: 1000; /* Ensure it's above other content */
 }
 
-section {
+#imageSection {
+    font-family: 'Teko', sans-serif;
+    background: linear-gradient(#ff9995, rgba(255,158,133,255), rgba(255,164,111,255));
     position: relative;
     width: 100%;
     height: 200vh;
@@ -30,23 +86,12 @@ section {
     overflow: hidden;
 }
 
-#imageSection {
-    font-family: 'Teko', sans-serif;
-    background: linear-gradient(#ff9995, rgba(255,158,133,255), rgba(255,164,111,255));
-}
-
-section img {
+#imageSection img {
     position: absolute;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: auto;
     object-fit: cover;
-}
-
-img {
-    object-fit: cover; /* cover, contain, fill are the most common values */
-    width: 100%;
-    height: 100vh;
 }
 
 #sun {
@@ -76,7 +121,7 @@ img {
 }
 
 #cityBack {
-    bottom: 0px; /* height of section::before */
+    bottom: 0px;
 }
 
 #imageSection::before {
@@ -102,9 +147,20 @@ img {
 }
 
 .transition {
-    height: 100vh;
+    height: 120vh;
     background-color: black;
-    z-index: 10000;
+    z-index: 1000;
+    position: relative;
+}
+
+.transition::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 150px; /* or whatever height you desire for the fade effect */
+    background: linear-gradient(to top, black, transparent);
+    z-index: 1; /* Ensuring this is above the base layer but not necessarily above other content you might have */
 }
 
 .type-section {
@@ -121,18 +177,98 @@ img {
 }
 
 .introduction h1 {
-    font-size: 2em; /* Adjust this as per your preference */
-    color: white; /* You can change this as per your preference */
+    font-size: 2em;
+    color: white;
     position: sticky;
+}
+
+.activitySection {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+    padding: 20px;
+    background: linear-gradient(96.9deg, rgb(80, 255, 207) 10.5%, rgb(22, 185, 255) 74.4%);
+}
+
+.activitySection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: 
+    linear-gradient(to bottom, black, transparent 100px, transparent calc(100% - 100px), black); 
+    z-index: 2;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 120vh;
+}
+
+section h1 {
+    font-size: 5vh;
+}
+
+section p {
+    font-size: 3vh;
 }
 
 #cursor {
     animation: blink 1s infinite;
 }
 
+.scroller {
+    max-width: 80vw;
+}
+
+.set-image img {
+    width: 15vw;
+    height: auto;
+    border: solid transparent;
+    border-radius: 30px;
+}
+
+.scroller__inner {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.scroller[data-animated="true"] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+    width: max-content;
+    flex-wrap: nowrap;
+    animation: scroll 20s linear infinite;
+}
+
+.transition a {
+    color: white;
+}
+
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - 0.5rem));
+    }
+}
+
 @keyframes blink {
     0%, 49% { opacity: 1; }
     50%, 100% { opacity: 0; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 @media (max-width: 1300px) {
@@ -141,6 +277,7 @@ img {
     }
     #text {
         bottom: 50vh;
+        right: -20vw;
     }
     
     #cloud {
@@ -154,6 +291,7 @@ img {
     }
     #text {
         bottom: 30vh;
+        right: -100vw;
     }
     
     #cloud {
