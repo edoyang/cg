@@ -60,7 +60,6 @@ body {
     font-family: 'Black Ops One', sans-serif;
 }
 
-/* Ensure intro takes up entire screen and centers content */
 .intro {
     position: fixed;
     top: 0;
@@ -273,7 +272,7 @@ section p {
 
 @media (max-width: 1300px) {
     section {
-        height: 120vh;
+        height: 120vh !important;
     }
     #text {
         bottom: 50vh;
@@ -283,18 +282,69 @@ section p {
     #cloud {
         bottom: 30vh;
     }
+    .set-image img {
+        width: 30vw;
+        height: auto;
+        border: solid transparent;
+        border-radius: 30px;
+    }
 }
 
 @media (max-width: 768px) {
     section {
-        height: 80vh;
+        height: 100vh !important;
     }
     #text {
         bottom: 30vh;
-        right: -100vw;
     }
     
     #cloud {
         bottom: 30vh;
+    }
+    .set-image img {
+        width: 40vw;
+        height: auto;
+        border: solid transparent;
+        border-radius: 30px;
+    }
+}
+
+@media (max-width: 568px) {
+    section {
+        height: 50vh;
+    }
+    #text {
+        bottom: 30vh;
+        right: -50vw;
+    }
+    
+    #cloud {
+        bottom: 30vh;
+    }
+    .set-image img {
+        width: 30vw;
+        height: auto;
+        border: solid transparent;
+        border-radius: 30px;
+    }
+}
+
+@media (max-width: 458px) {
+    section {
+        height: 50vh;
+    }
+    #text {
+        bottom: 30vh;
+        right: -70vw;
+    }
+    
+    #cloud {
+        bottom: 30vh;
+    }
+    .set-image img {
+        width: 40vw;
+        height: auto;
+        border: solid transparent;
+        border-radius: 30px;
     }
 }

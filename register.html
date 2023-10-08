@@ -19,7 +19,6 @@
     <input type="text" name="name" placeholder="Name" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
     <textarea name="message" placeholder="Message" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;"></textarea>
 
-    <!-- This is the changed part -->
     <label for="availability" style="font-weight: bold; font-size: 16px;">Availability:</label>
     <select name="availability" id="availability" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
         <option value="monday">Monday</option>
@@ -30,36 +29,10 @@
         <option value="saturday">Saturday</option>
         <option value="sunday">Sunday</option>
     </select>
-
+    <input type="text" name="How we can contact you ?" placeholder="Instagram, Facebook, Whatsapp, Line or etc." style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
     <input type="submit" value="Send" style="background-color: #007BFF; color: #ffffff; border: none; border-radius: 5px; padding: 10px 15px; font-size: 16px; cursor: pointer;">
 </form>
 
 <div id="formResponse" style="text-align: center; margin-top: 20px;"></div>
-
-<!-- <script>
-    function closePopup() {
-        document.getElementById('popup').style.display = 'none';
-    }
-
-    document.getElementById("myForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        fetch(event.target.action, {
-            method: 'POST',
-            body: new FormData(event.target)
-        }).then(response => {
-            if (response.ok) {
-                document.getElementById('popupMessage').textContent = 'Thank you for your submission!';
-                document.getElementById('popup').style.display = 'flex';
-                event.target.reset();
-            } else {
-                throw new Error('Form submission failed');
-            }
-        }).catch(error => {
-            document.getElementById('popupMessage').textContent = 'There was a problem when trying to submit the form.';
-            document.getElementById('popup').style.display = 'flex';
-            console.error(error);
-        });
-    });
-</script> -->
 </body>
 </html>

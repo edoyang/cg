@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>About - AOG Event</title>
+        <link rel="stylesheet" href="about.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="navbar">
+            <img src="assets/logo.png" alt="AOG" class="logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="register.html">Registration</a></li>
+            </ul>
+        </div>
+
+        <!-- Summary of Event -->
+        <section class="summary-section">
+            <h1>Summary of Event</h1>
+            <p>
+                The AOG Youth 01 event is an engaging and exciting month-long event that brings together the youth for various activities ranging from picnics to cooking nights, BBQ evenings, and insightful events inside the church. Join us to be part of this exhilarating experience and make lasting memories.
+            </p>
+        </section>
+
+        <!-- Contact Number -->
+        <section class="contact-section">
+            <h1>Contact Us</h1>
+            <p>
+                For any queries, reach out to us at: <a style="text-decoration: none;" href="https://www.instagram.com/roscsydney/">@roscsydney</a> (instagram)
+            </p>
+        </section>
+
+        <!-- Documentation -->
+        <section class="documentation-section">
+            <h1>Documentation</h1>
+            <label for="document-dropdown">Select a Document:</label>
+            <select id="document-dropdown" onchange="showDocument(this.value)">
+                <option value="default">-- Select a Document --</option>
+                <option value="week1"> Week 1</option>
+                <option value="week2"> Week 2</option>
+                <option value="week3"> Week 3</option>
+                <option value="week4"> Week 4</option>
+            </select>
+            
+            <div id="document-display">
+                <!-- The video or the coming soon message will be displayed here -->
+            </div>
+
+            <script>
+                function showDocument(value) {
+                    const displayArea = document.getElementById("document-display");
+                    
+                    if (value !== 'default') {
+                        displayArea.innerHTML = `<video width="640" height="480" controls onerror="this.parentElement.innerHTML='<p>Coming soon...</p>'">
+                                                    <source src="assets/videos/${value}.mp4" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>`;
+                    } else {
+                        displayArea.innerHTML = '';  // Reset to empty for the default option
+                    }
+                }
+            </script>
+        </section>
+
+        <script src="script.js"></script>
+    </body>
+</html>
