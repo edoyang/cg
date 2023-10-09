@@ -16,9 +16,10 @@
     </div>
 </div>
 <form id="myForm" action="https://formsubmit.co/cg.aog01.teamb@gmail.com" method="POST" style="box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 20px; background-color: #ffffff; border-radius: 8px; display: flex; flex-direction: column; gap: 15px; width: 100%; max-width: 500px;">
+    <label for="text" style="font-weight: bold; font-size: 16px;">Name:</label>
     <input type="text" name="name" placeholder="Name" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
+    <label for="message" style="font-weight: bold; font-size: 16px;">Message:</label>
     <textarea name="message" placeholder="Message" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;"></textarea>
-
     <label for="availability" style="font-weight: bold; font-size: 16px;">Availability:</label>
     <select name="availability" id="availability" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
         <option value="monday">Monday</option>
@@ -29,8 +30,14 @@
         <option value="saturday">Saturday</option>
         <option value="sunday">Sunday</option>
     </select>
+    <label for="contact" style="font-weight: bold; font-size: 16px;">Contact:</label>
     <input type="text" name="How we can contact you ?" placeholder="Instagram, Facebook, Whatsapp, Line or etc." style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 16px;">
     <input type="submit" value="Send" style="background-color: #007BFF; color: #ffffff; border: none; border-radius: 5px; padding: 10px 15px; font-size: 16px; cursor: pointer;">
+    <a href="/index.html" style="
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    ">Back to Home</a>
 </form>
 
 <div id="formResponse" style="text-align: center; margin-top: 20px;"></div>
