@@ -8,7 +8,6 @@ let typeSection = document.querySelector('.type-section');
 let hasStartedTyping = false;
 
 function updateSectionPositions() {
-    // Dynamically update sectionStart, middleSection, and sectionEnd based on the current values
     sectionStart = imageSection.offsetTop;
     sectionEnd = sectionStart + imageSection.offsetHeight;
 }
@@ -16,22 +15,18 @@ function updateSectionPositions() {
 window.addEventListener('scroll', function() {
     let value = window.scrollY;
 
-    // Update positions dynamically on scroll
     updateSectionPositions();
 
-    // For the images and text animation
     if (value > sectionStart && value < sectionEnd) {
         sun.style.top = (value - sectionStart) * 1 + 'px';
         cloud.style.left = (value - sectionStart) * 0.25 + 'px';
         text.style.marginRight = (value - sectionStart) * 0.8 + 'px';
     } else if (value >= sectionEnd) {
-        // Reset styles when out of the section
         sun.style.top = '';
         cloud.style.left = '';
         text.style.marginRight = '';
     }
 
-    // For the typing effect
     let sectionTop = typeSection.offsetTop;
     let sectionBottom = sectionTop + typeSection.offsetHeight;
 
@@ -63,7 +58,7 @@ function resetType() {
 let typingTimeout;
 
 function type() {
-    clearTimeout(typingTimeout); // Clear any existing timeouts
+    clearTimeout(typingTimeout);
 
     if (isDeleting) {
         if (charIndex > 0) {
@@ -118,13 +113,11 @@ function addAnimation() {
 window.addEventListener('DOMContentLoaded', (event) => {
     const introElement = document.querySelector('.intro');
 
-    // Show the intro and then fade it out after a delay
     setTimeout(() => {
         introElement.style.animation = 'fadeOut 1s forwards';
 
-        // After the animation, hide the intro from the flow of the document
         setTimeout(() => {
             introElement.style.display = 'none';
-        }, 1000); // this should match the duration of your fade-out animation
-    }, 2000); // this means the pop-up will display for 3 seconds before fading out
+        }, 1000);
+    }, 2000);
 });

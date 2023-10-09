@@ -20,24 +20,23 @@ ul, li {
 
 body {
     min-height: 100vh;
-    font-family: 'Black Ops One', sans-serif;
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between; /* Push logo to the left and ul to the right */
+    justify-content: space-between; 
     align-items: center;
-    position: fixed; /* Make the navbar fixed/sticky */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 10px 5%; /* Add some padding to give it space */
-    background-color: transparent; /* Make the background transparent */
-    z-index: 9999; /* Ensure the navbar stays on top */
+    padding: 10px 5%;
+    background-color: transparent;
+    z-index: 9999;
 }
 
 .logo {
-    height: 100px; /* You can adjust this to change the logo size */
+    height: 100px;
 }
 
 .navbar ul {
@@ -45,20 +44,18 @@ body {
 }
 
 .navbar li {
-    margin: 0 10px; /* Add some margin between the list items */
+    margin: 0 10px;
 }
 
 .navbar a {
-    text-decoration: none; /* Remove the underline */
-    color: white; /* Starting color */
-    text-shadow: 2px 2px 1px black; /* Black outline */
-    font-size: 16px; /* Font size */
-    transition: color 0.3s; /* Transition for the hover effect */
+    text-decoration: none;
+    color: white;
+    font-size: 16px; 
+    transition: color 0.3s;
 }
 
 .navbar a:hover {
-    color: gray; /* Color on hover, change as desired */
-    text-shadow: 2px 2px 1px black; /* Black outline on hover */
+    color: gray;
 }
 
 .intro {
@@ -167,6 +164,7 @@ body {
     height: 100vh;
     position: relative;
     background-color: #26284a;
+    font-family: 'Teko', sans-serif;
 }
 
 .introduction {
@@ -242,6 +240,7 @@ section {
 .btn, .btn-primary {
     position: absolute;
     bottom: 1%;
+    background-color: transparent;
 }
 
 section h1 {
@@ -280,6 +279,10 @@ section p {
 
 .transition a {
     color: white;
+}
+
+.register {
+    font-family: 'Black Ops One', sans-serif;
 }
 
 @keyframes scroll {
@@ -351,5 +354,46 @@ section p {
     
     #cloud {
         bottom: 30vh;
+    }
+    .card-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 5%;
+    }
+    
+    .card {
+        border-radius: 20px;
+        height: 250px;
+        width: 100px !important;
+        background-color: #26284a;
+        border: 0.1px solid white;
+    }
+    
+    .card img {
+        border-radius: 20px 20px 0 0;
+        height: 100px;
+    }
+
+    .card-title {
+        font-size: 15px;
+    }
+
+    .card-text {
+        font-size: 10px;
+    }
+    
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 5px;
+    }
+    
+    .btn, .btn-primary {
+        position: absolute;
+        bottom: 1%;
+        font-size: 8px;
     }
 }
